@@ -1,3 +1,4 @@
 import "./styles.css";
+import { renderHomePage } from "./pages/home";
 
-console.log("Hello World!");
+renderHomePage();
