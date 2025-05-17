@@ -1,6 +1,7 @@
 import utilities from "../data/utilities";
+import { renderPomodoroPage } from "./pomodoro.js";
 
-function createUtilityCard(title, desc, color, svg){
+function createUtilityCard(title, desc, color, id){
     const card = document.createElement("div");
     const titleElement = document.createElement("h3");
     const descElement = document.createElement("p");
@@ -9,6 +10,7 @@ function createUtilityCard(title, desc, color, svg){
     descElement.textContent = desc;
     
     titleElement.style.color = color;
+    card.setAttribute("id", id);
 
     card.appendChild(titleElement);
     card.appendChild(descElement);
@@ -23,8 +25,8 @@ function createHomeElements(){
     const content = document.createElement("div");
     content.setAttribute("id", "content");
 
-    utilities.forEach(({ title, description, color, svg }) => {
-        const card = createUtilityCard(title, description, color, svg);
+    utilities.forEach(({ title, description, color, id }) => {
+        const card = createUtilityCard(title, description, color, id);
         card.classList.add("utilityCard");
         content.appendChild(card);
     });
@@ -41,6 +43,27 @@ function renderHomePage(){
 
     app.appendChild(homeElements);
 
+    setEventListeners();
+
+}
+
+function setEventListeners(){
+    document.addEventListener("click", function(event){
+       
+        const target = event.target.closest(".utilityCard");
+       
+        if(!target){
+            return;
+        }
+        const id = target.id
+
+     
+
+        if(id === "pomodoroTimer"){
+            renderPomodoroPage();
+        }
+        
+    });
 }
 
 export {renderHomePage};
