@@ -3,6 +3,7 @@
     --padding-small: 10px;
     --padding-large: 20px;
     --color-secondary: #F0F0F2;
+    --text-color: #282826;
     --border-radius: 10px;
     --global-transition: 0.15s ease-in-out;
 }
@@ -25,9 +26,12 @@ body{
     "footer";
 }
 
+p, h1, h2, h3, b, i{
+    color: var(--text-color);
+}
+
 header{
     grid-area: header;
-    background-color: var(--color-secondary);
     display: flex;
     justify-content: center;
     text-align: center;

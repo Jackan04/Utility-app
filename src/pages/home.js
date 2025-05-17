@@ -1,5 +1,6 @@
 import utilities from "../data/utilities";
 import { renderPomodoroPage } from "./pomodoro.js";
+import { renderHeader } from "../components/header.js";
 
 function createUtilityCard(title, desc, color, id){
     const card = document.createElement("div");
@@ -35,6 +36,7 @@ function createHomeElements(){
 }
 
 function renderHomePage(){
+    renderHeader("Utility App", "A collection of handy tools, all in one place.", "#F0F0F2");
  
     const app = document.querySelector("#app");
     app.innerHTML = "";
