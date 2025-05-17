@@ -3,6 +3,7 @@
     --padding-small: 10px;
     --padding-large: 20px;
     --color-secondary: #F0F0F2;
+    --border-radius: 10px;
 }
 
 * {
@@ -39,10 +40,24 @@ header{
 
 main{
     grid-area: main;
+    margin: 3rem;
+}
+
+main > #content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 1.5rem;
 }
 
 .utilityCard{
-    
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    border-radius: var(--border-radius);
+    gap: 10px;
+    padding: var(--padding-large);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 footer{

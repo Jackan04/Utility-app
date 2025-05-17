@@ -1,15 +1,18 @@
-import utilites from "../data/utilities";
+import utilities from "../data/utilities";
 
-function createUtilityCard(title, desc){
+function createUtilityCard(title, desc, color, svg){
     const card = document.createElement("div");
     const titleElement = document.createElement("h3");
     const descElement = document.createElement("p");
     
     titleElement.textContent = title;
     descElement.textContent = desc;
+    
+    titleElement.style.color = color;
 
     card.appendChild(titleElement);
     card.appendChild(descElement);
+
 
     return card;
 
@@ -19,10 +22,9 @@ function createUtilityCard(title, desc){
 function createHomeElements(){
     const content = document.createElement("div");
     content.setAttribute("id", "content");
-    content.textContent = "Home Page";
 
-    utilites.forEach(({ title, description }) => {
-        const card = createUtilityCard(title, description);
+    utilities.forEach(({ title, description, color, svg }) => {
+        const card = createUtilityCard(title, description, color, svg);
         card.classList.add("utilityCard");
         content.appendChild(card);
     });
