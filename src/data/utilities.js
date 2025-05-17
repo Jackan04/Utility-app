@@ -2,20 +2,20 @@ const utilities = [
 
     {
         title: "Pomodoro timer", 
-        description: "A customizable pomodoro timer when you feel like you need to focus.",
+        description: "Stay focused with a customizable Pomodoro timer designed to boost productivity.",
         color: "#FF9F5B",
         svg: "",
     },
 
     {
         title: "QR Code Generator", 
-        description: "Instantly generate QR codes out of URL:s and customize them to your taste.",
+        description: "Quickly generate and customize QR codes from any URL.",
         color: "#925AD3",
         svg: "",
     },
     {
         title: "Todo App",
-        description: "Create a simple task list to help you focus and keep track of your most important tasks.",
+        description: "Stay organized with a clean and simple to-do list for your most important tasks.",
         color: "#3984F3",
         svg: "",
     }

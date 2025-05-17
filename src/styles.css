@@ -4,12 +4,14 @@
     --padding-large: 20px;
     --color-secondary: #F0F0F2;
     --border-radius: 10px;
+    --global-transition: 0.15s ease-in-out;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 body{
@@ -58,6 +60,12 @@ main > #content{
     gap: 10px;
     padding: var(--padding-large);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--global-transition);
+}
+
+.utilityCard:hover{
+    transform: scale(1.03);
+    cursor: pointer;
 }
 
 footer{
