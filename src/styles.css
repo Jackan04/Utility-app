@@ -41,6 +41,10 @@ main{
     grid-area: main;
 }
 
+.utilityCard{
+    
+}
+
 footer{
     grid-area: footer;
     background-color: var(--color-secondary);
