@@ -5,7 +5,7 @@ import { renderHeader } from "../components/header"
 function generateQrCode(inputUrl){
     const canvas = document.createElement("canvas")
 
-    QRCode.toCanvas(canvas, inputUrl, {width: 200})
+    QRCode.toCanvas(canvas, inputUrl, {width: 300})
     const content = document.querySelector(".pageContent")
     content.appendChild(canvas)
 }
@@ -14,21 +14,18 @@ function createElements(){
     const content = document.createElement("div")
     const inputURL = document.createElement("input")
     const btnCreateCode = document.createElement("button")
-    const qrCode = document.createElement("div")
 
     content.setAttribute("class", "pageContent")
     inputURL.setAttribute("id", "inputUrl")
     inputURL.setAttribute("placeholder", "Enter a URL here")
-
     btnCreateCode.setAttribute("id", "btnCreateCode")
     btnCreateCode.setAttribute("class", "color-success")
-    qrCode.setAttribute("id", "qrCode")
 
-    btnCreateCode.textContent = "Generate QR Code"
+    btnCreateCode.textContent = "Create QR Code"
 
     content.appendChild(inputURL)
     content.appendChild(btnCreateCode)
-    content.appendChild(qrCode)
+
     
 
     return content
@@ -55,21 +52,28 @@ function renderQrCodePage(){
     const inputUrl = document.querySelector("#inputUrl")
     
     btnCreateCode.addEventListener("click", () => {
-        content.innerHTML = ""
-        generateQrCode(inputUrl.value)
-        const btnDownload = document.createElement("button")
-        const btnResetPage = document.createElement("button")
-        btnDownload.setAttribute("id", "btnDownloadQrCode")
-        btnDownload.setAttribute("class", "color-blue")
-        btnResetPage.setAttribute("class", "color-warning")
-        btnDownload.textContent = "Download QR Code"
-        btnResetPage.textContent = "Reset"
         
-        content.appendChild(btnDownload)
-        content.appendChild(btnResetPage)
+        if(inputUrl.value){
+            content.innerHTML = ""
+            generateQrCode(inputUrl.value)
+            const btnDownload = document.createElement("button")
+            const btnResetPage = document.createElement("button")
+            btnDownload.setAttribute("id", "btnDownloadQrCode")
+            btnDownload.setAttribute("class", "color-blue")
+            btnResetPage.setAttribute("class", "color-warning")
+            btnDownload.textContent = "Download as PNG"
+            btnResetPage.textContent = "Reset"
+            
+            content.appendChild(btnDownload)
+            content.appendChild(btnResetPage)
 
-        btnDownload.addEventListener("click", () => {downloadQrCode()})
-        btnResetPage.addEventListener("click", () => {renderQrCodePage()})
+            btnDownload.addEventListener("click", () => {downloadQrCode()})
+            btnResetPage.addEventListener("click", () => {renderQrCodePage()})
+        }else{
+            return;
+        }
+        
+        
     })
 
     

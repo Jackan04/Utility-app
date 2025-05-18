@@ -21,8 +21,8 @@
     --font-lg: 1.5rem;  
     --font-xl: 2rem;    
     
-    --global-transition: 0.2s ease-in-out;
-    --transform-scale: scale(1.03);
+    --global-transition: 0.15s ease-in-out;
+    --transform-translateY: translateY(-2px);;
 }
 
 * {
@@ -43,7 +43,7 @@ body{
     "footer";
 }
 
-p, h1, h2, h3, b, i{
+p, h1, h2, h3, b, i, button{
     color: var(--text-color);
 }
 
@@ -117,9 +117,9 @@ main > #homePageContent{
 }
 
 .utilityCard:hover{
-    transform: var(--transform-scale);
+    transform: var(--transform-translateY);
     cursor: pointer;
-    box-shadow: var(--box-shadow);
+
 }
 
 .pageContent{
@@ -156,30 +156,37 @@ button{
 
 button:hover{
     cursor: pointer;
-    transform: var(--transform-scale);
-    
+    transform: var(--transform-translateY);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+    
+
 
 button:focus{
     outline: none;
 }
 
 button:active{
-     transform: scale(0.7);
+     transform: translateY(5px);;
     filter: brightness(0.8);
     
 }
 
-input{
-    padding: var(--padding-small);
-    width: 200px;
-    border-radius: var(--border-radius);
-    border: none;
-    border: 2px solid var(--text-color);
+input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--font-md);
+  border: 2px solid #ccc;
+  border-radius: var(--border-radius);
+  background-color: #fff;
+  color: var(--text-color);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus{
-    outline: none;
+input:focus {
+  border-color: #925AD3;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.2);
+  outline: none;
 }
 
 
