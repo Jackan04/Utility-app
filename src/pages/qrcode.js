@@ -1,36 +1,69 @@
+import QRCode from 'qrcode'
 import { renderHeader } from "../components/header"
 
+
 function generateQrCode(inputUrl){
-    
+    const canvas = document.createElement("canvas")
+
+    QRCode.toCanvas(canvas, inputUrl, {width: 200})
+    const qrCode = document.querySelector("#qrCode")
+    qrCode.appendChild(canvas)
 }
 
 function createElements(){
     const content = document.createElement("div")
     const inputURL = document.createElement("input")
     const btnCreateCode = document.createElement("button")
+    const qrCode = document.createElement("div")
 
     content.setAttribute("class", "pageContent")
     inputURL.setAttribute("id", "inputUrl")
+    inputURL.setAttribute("placeholder", "Enter a URL here")
+
     btnCreateCode.setAttribute("id", "btnCreateCode")
     btnCreateCode.setAttribute("class", "color-success")
+    qrCode.setAttribute("id", "qrCode")
 
     btnCreateCode.textContent = "Generate QR Code"
 
     content.appendChild(inputURL)
     content.appendChild(btnCreateCode)
+    content.appendChild(qrCode)
+    
 
     return content
+
+}
+
+function downloadQrCode(){
+    const canvas = document.querySelector("canvas") 
+    const link = document.createElement("a")
+    link.download = "qrcode.png"
+    link.href = canvas.toDataURL("image/png")
+    link.click()
 
 }
 
 function renderQrCodePage(){
     const app = document.querySelector("#app")
     app.innerHTML = ""
-
     renderHeader("QR Code Generator", "", "rgba(57.3%, 35.3%, 82.7%, 0.3)", "rgba(57.3%, 35.3%, 82.7%, 1)", )
-    
     const content = createElements()
     app.appendChild(content)
+
+    const btnCreateCode = document.querySelector("#btnCreateCode")
+    const inputUrl = document.querySelector("#inputUrl")
+    btnCreateCode.addEventListener("click", () => {
+        generateQrCode(inputUrl.value)
+        
+        const btnDownload = document.createElement("button")
+        btnDownload.setAttribute("id", "btnDownloadQrCode")
+        btnDownload.textContent = "Download QR Code"
+        content.appendChild(btnDownload)
+        btnDownload.addEventListener("click", () => {downloadQrCode()})
+    })
+
+    
 
 }
 
