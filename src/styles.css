@@ -7,8 +7,10 @@
     --border-radius: 10px;
     
     --color-secondary: #F0F0F2;
+    --color-blue: #9AC0F9;
     --color-success: #AFECB7;
     --color-danger: #F59CB1;
+    --color-warning: #FFCDAB;
     --text-color: #282826;
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
@@ -180,12 +182,21 @@ input:focus{
     outline: none;
 }
 
+
 #btn-home{
     background-color: rgba(100%, 100%, 100%, 0.7);
 }
 
 #btn-set-break{
     background-color: #FFE2CF;
+}
+
+.color-blue{
+    background-color: var(--color-blue);
+}
+
+.color-warning{
+    background-color: #FFCDAB;
 }
 
 .color-success{

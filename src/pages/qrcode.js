@@ -6,8 +6,8 @@ function generateQrCode(inputUrl){
     const canvas = document.createElement("canvas")
 
     QRCode.toCanvas(canvas, inputUrl, {width: 200})
-    const qrCode = document.querySelector("#qrCode")
-    qrCode.appendChild(canvas)
+    const content = document.querySelector(".pageContent")
+    content.appendChild(canvas)
 }
 
 function createElements(){
@@ -53,14 +53,23 @@ function renderQrCodePage(){
 
     const btnCreateCode = document.querySelector("#btnCreateCode")
     const inputUrl = document.querySelector("#inputUrl")
+    
     btnCreateCode.addEventListener("click", () => {
+        content.innerHTML = ""
         generateQrCode(inputUrl.value)
-        
         const btnDownload = document.createElement("button")
+        const btnResetPage = document.createElement("button")
         btnDownload.setAttribute("id", "btnDownloadQrCode")
+        btnDownload.setAttribute("class", "color-blue")
+        btnResetPage.setAttribute("class", "color-warning")
         btnDownload.textContent = "Download QR Code"
+        btnResetPage.textContent = "Reset"
+        
         content.appendChild(btnDownload)
+        content.appendChild(btnResetPage)
+
         btnDownload.addEventListener("click", () => {downloadQrCode()})
+        btnResetPage.addEventListener("click", () => {renderQrCodePage()})
     })
 
     
