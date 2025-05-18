@@ -13,6 +13,11 @@
     --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
     --font-size-button: 1rem;
+    --font-xs: 0.875rem; 
+    --font-sm: 1rem;    
+    --font-md: 1.125rem; 
+    --font-lg: 1.5rem;  
+    --font-xl: 2rem;    
     
     --global-transition: 0.2s ease-in-out;
     --transform-scale: scale(1.03);
@@ -40,6 +45,18 @@ p, h1, h2, h3, b, i{
     color: var(--text-color);
 }
 
+p{
+    font-size: var(--font-sm);
+}
+
+h1{
+    font-size: var(--font-xl);
+}
+
+h2{
+    font-size: var(--font-lg);
+}
+
 header{
     grid-area: header;
     display: flex;
@@ -47,19 +64,32 @@ header{
     justify-content: center;
     text-align: center;
     padding: var(--padding-large);
-    height: 100px;
 }
 
 #header-content{
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 7px;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
+
+.header-left,
+.header-center,
+.header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.header-center {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 main{
     grid-area: main;
-    
     align-items: center;
     margin: 3rem;
 
@@ -90,13 +120,25 @@ main > #homePageContent{
     box-shadow: var(--box-shadow);
 }
 
+.pageContent{
+    display: grid;
+    place-items: center;
+    gap: 3rem;
+    max-width: 800px;
+    padding: var(--padding-large);
+    margin: 0 auto; 
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+ 
+}
+
 footer{
     grid-area: footer;
     background-color: var(--color-secondary);
     width: 100%;
     height: 60px;
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     padding: var(--padding-small);
     
@@ -104,7 +146,7 @@ footer{
 
 button{
     padding: var(--padding-button);
-    font-size: var(--font-button);
+    font-size: var(--font-sm);
     border: none;
     border-radius: var(--border-radius);
     transition: var(--global-transition);
@@ -127,10 +169,11 @@ button:active{
 }
 
 #btn-home{
-    position: absolute;
     background-color: rgba(100%, 100%, 100%, 0.7);
-    top: 3.5%;
-    left: 3%;
+}
+
+#btn-set-break{
+    background-color: #FFE2CF;
 }
 
 .color-success{
@@ -146,17 +189,22 @@ button:active{
     gap: 15px;
 }
 
+@media (min-width: 601px) {
+  :root {
+    --font-xs: 0.75rem;   
+    --font-sm: 0.875rem;   
+    --font-md: 1rem;       
+    --font-lg: 1.25rem;    
+    --font-xl: 1.5rem; 
+  }
+}
 
-/* Pomodoro Page */
-main > #pomodoroPageContent{
-    display: grid;
-    place-items: center;
-    gap: 3rem;
-    max-width: 600px;
-    padding: var(--padding-large);
-    margin: 0 auto; 
-    box-shadow: var(--box-shadow);
-    border-radius: var(--border-radius);
 
- 
+@media (min-width: 1024px) {
+  :root {
+     --font-sm: 1.1rem;
+    --font-md: 1.25rem;
+    --font-lg: 1.75rem;
+    --font-xl: 2.25rem;
+  }
 }

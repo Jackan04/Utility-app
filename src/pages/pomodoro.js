@@ -1,7 +1,7 @@
 import { renderHeader } from "../components/header"
 
 let intervalId
-let timeLeft = 25 * 60 
+let timeLeft = 25 * 60
 
 
 function startTimer(clockText) {
@@ -10,6 +10,9 @@ function startTimer(clockText) {
       if (timeLeft <= 0) {
         clearInterval(intervalId)
         clockText.textContent = "Time's up!"
+        const audio = new Audio("alarm.mp3")
+        audio.play();
+
         return
       }
   
@@ -26,27 +29,40 @@ function startTimer(clockText) {
     clockText.textContent = "25:00"
   }
 
-function createPomodoroElements(){
+  function startBreak(clockText){
+      clearInterval(intervalId)
+      timeLeft = 5 * 60
+      clockText.textContent = "5:00"
+
+  }
+
+
+  function createPomodoroElements(){
     const pomodoroContent = document.createElement("div")
     const clockContainer = document.createElement("div")
+    const btnSetBreak = document.createElement("button")
     const clockText = document.createElement("h1")
     const btnContainer = document.createElement("div");
     const btnStart = document.createElement("button")
     const btnReset = document.createElement("button")
 
-    pomodoroContent.setAttribute("id", "pomodoroPageContent")
+    pomodoroContent.setAttribute("class", "pageContent")
     btnStart.setAttribute("id", "btn-start")
     btnReset.setAttribute("id", "btn-reset")
     btnStart.setAttribute("class", "color-success")
     btnReset.setAttribute("class", "color-danger")
     btnContainer.setAttribute("class", "btn-container")
+    btnSetBreak.setAttribute("id", "btn-set-break")
+
 
     clockText.textContent = "25:00"
     btnStart.textContent = "Start"
     btnReset.textContent = "Reset"
+    btnSetBreak.textContent = "Take a Break"
 
     btnContainer.appendChild(btnStart)
     btnContainer.appendChild(btnReset)
+    btnContainer.appendChild(btnSetBreak);
     clockContainer.appendChild(clockText)
     pomodoroContent.appendChild(clockContainer)
     pomodoroContent.appendChild(btnContainer)
@@ -54,6 +70,7 @@ function createPomodoroElements(){
 
     btnStart.addEventListener("click", () => startTimer(clockText))
     btnReset.addEventListener("click", () => resetTimer(clockText))
+    btnSetBreak.addEventListener("click", () => startBreak(clockText))
 
     return pomodoroContent
 
