@@ -24,7 +24,7 @@ function createUtilityCard(title, desc, color, id){
 
 function createHomeElements(){
     const content = document.createElement("div");
-    content.setAttribute("id", "content");
+    content.setAttribute("id", "homePageContent");
 
     utilities.forEach(({ title, description, color, id }) => {
         const card = createUtilityCard(title, description, color, id);
