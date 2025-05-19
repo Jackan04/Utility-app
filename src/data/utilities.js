@@ -20,7 +20,7 @@ const utilities = [
         id: "todoApp",
         title: "Todo App",
         description: "Stay organized with a clean and simple to-do list for your most important tasks.",
-        color: "#3984F3",
+        color: "#669FFB",
         svg: "",
     }
 ];
