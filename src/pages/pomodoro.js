@@ -2,6 +2,7 @@ import { renderHeader } from "../components/header"
 
 let intervalId
 let timeLeft = 25 * 60
+let isSoundEnabled = true;
 
 
 function startTimer(clockText) {
@@ -10,8 +11,12 @@ function startTimer(clockText) {
       if (timeLeft <= 0) {
         clearInterval(intervalId)
         clockText.textContent = "Time's up!"
-        const audio = new Audio("alarm.mp3")
-        audio.play();
+
+        if(isSoundEnabled){
+           const audio = new Audio("alarm.mp3")
+           audio.play();
+        }
+       
 
         return
       }
@@ -36,6 +41,17 @@ function startTimer(clockText) {
 
   }
 
+  function toggleSound(){
+    const btnToggleSound = document.querySelector("#btn-toggle-sound")
+
+    if(isSoundEnabled){
+      isSoundEnabled = false;
+      btnToggleSound.textContent = "Sound: Off"
+    }else{
+      isSoundEnabled = true;
+      btnToggleSound.textContent = "Sound: On"
+    }
+  }
 
   function createPomodoroElements(){
     const pomodoroContent = document.createElement("div")
@@ -65,7 +81,7 @@ function startTimer(clockText) {
     btnStart.textContent = "Start"
     btnReset.textContent = "Reset"
     btnSetBreak.textContent = "Take a Break"
-    btnToggleSound.textContent = "No Sound"
+    btnToggleSound.textContent = "Sound: On"
 
     btnContainer.appendChild(btnStart)
     btnContainer.appendChild(btnReset)
@@ -79,6 +95,7 @@ function startTimer(clockText) {
     btnStart.addEventListener("click", () => startTimer(clockText))
     btnReset.addEventListener("click", () => resetTimer(clockText))
     btnSetBreak.addEventListener("click", () => startBreak(clockText))
+    btnToggleSound.addEventListener("click", () => toggleSound())
 
     return pomodoroContent
 

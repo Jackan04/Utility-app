@@ -59,8 +59,7 @@ function renderQrCodePage(){
             const btnDownload = document.createElement("button")
             const btnResetPage = document.createElement("button")
             btnDownload.setAttribute("id", "btnDownloadQrCode")
-            btnDownload.setAttribute("class", "color-blue")
-            btnResetPage.setAttribute("class", "color-warning")
+            btnDownload.setAttribute("class", "color-purple")
             btnDownload.textContent = "Download as PNG"
             btnResetPage.textContent = "Reset"
             

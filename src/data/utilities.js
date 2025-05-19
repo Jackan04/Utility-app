@@ -3,7 +3,7 @@ const utilities = [
     {
         id: "pomodoroTimer",
         title: "Pomodoro timer", 
-        description: "Stay focused with a customizable Pomodoro timer designed to boost productivity.",
+        description: "Stay focused with a simple Pomodoro timer designed to boost productivity.",
         color: "#FF9F5B",
         svg: "",
         
@@ -12,7 +12,7 @@ const utilities = [
     {
         id: "qrCodeGenerator",
         title: "QR Code Generator", 
-        description: "Quickly generate and customize QR codes from any URL.",
+        description: "Convert any link or text into a QR code you can download.",
         color: "#925AD3",
         svg: "",
     },
