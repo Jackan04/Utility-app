@@ -258,6 +258,16 @@ input:focus {
     padding: var(--padding-button);
     border-radius: var(--border-radius);
 }
+
+/* =========================
+   Components: Todo App
+   ========================= */
+#todoInputContainer{
+    display: flex;
+    gap: 1rem;
+}
+
+
 /* =========================
    Responsive
    ========================= */

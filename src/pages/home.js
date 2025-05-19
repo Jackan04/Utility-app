@@ -2,6 +2,7 @@ import utilities from "../data/utilities"
 import { renderPomodoroPage } from "./pomodoro.js"
 import { renderHeader } from "../components/header.js"
 import { renderQrCodePage } from "./qrcode.js"
+import { renderTodoPage } from "./todo.js"
 
 function createUtilityCard(title, desc, color, id){
     const card = document.createElement("div")
@@ -67,6 +68,9 @@ function setEventListeners(){
         }
         else if(id === "qrCodeGenerator"){
             renderQrCodePage()
+        }
+        else if(id === "todoApp"){
+            renderTodoPage()
         }
         
     })
