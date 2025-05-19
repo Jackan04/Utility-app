@@ -1,11 +1,15 @@
+/* =========================
+   Imports & Root Variables
+   ========================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-:root{
+
+:root {
     --padding-small: 10px;
     --padding-large: 20px;
     --padding-button: 0.8rem 1.2rem;
 
     --border-radius: 10px;
-    
+
     --color-secondary: #F0F0F2;
     --color-blue: #9AC0F9;
     --color-success: #AFECB7;
@@ -20,46 +24,54 @@
     --font-md: 1.125rem; 
     --font-lg: 1.5rem;  
     --font-xl: 2rem;    
-    
+
     --global-transition: 0.15s ease-in-out;
-    --transform-translateY: translateY(-2px);;
+    --transform-translateY: translateY(-2px);
 }
 
+/* =========================
+   Reset & Base Styles
+   ========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-body{
+body {
     height: 100vh;
     font-family: 'Inter', sans-serif;
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-areas: 
-    "header"
-    "main"
-    "footer";
+        "header"
+        "main"
+        "footer";
 }
 
-p, h1, h2, h3, b, i, button{
-    color: var(--text-color);
-}
-
-p{
-    font-size: var(--font-sm);
-}
-
-h1{
+/* =========================
+   Typography
+   ========================= */
+h1 {
     font-size: var(--font-xl);
 }
 
-h2{
+h2 {
     font-size: var(--font-lg);
 }
 
-header{
+p {
+    font-size: var(--font-sm);
+}
+
+p, h1, h2, h3, b, i, button {
+    color: var(--text-color);
+}
+
+/* =========================
+   Layout: Header
+   ========================= */
+header {
     grid-area: header;
     display: flex;
     flex-direction: column;
@@ -68,7 +80,7 @@ header{
     padding: var(--padding-large);
 }
 
-#header-content{
+#header-content {
     display: flex;
     align-items: center;
     height: 100%;
@@ -83,46 +95,36 @@ header{
     align-items: center;
 }
 
+.header-left {
+    justify-content: flex-start;
+}
+
 .header-center {
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.header-right {
+    justify-content: flex-end;
+}
 
-main{
+/* =========================
+   Layout: Main & Content
+   ========================= */
+main {
     grid-area: main;
     align-items: center;
     margin: 3rem;
-
 }
 
-main > #homePageContent{
+main > #homePageContent {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 }
 
-
-
-.utilityCard{
-    display: flex;
-    flex-direction: column;
-    height: 160px;
-    border-radius: var(--border-radius);
-    gap: 10px;
-    padding: var(--padding-large);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: var(--global-transition);
-}
-
-.utilityCard:hover{
-    transform: var(--transform-translateY);
-    cursor: pointer;
-
-}
-
-.pageContent{
+.pageContent {
     display: grid;
     place-items: center;
     gap: 3rem;
@@ -131,10 +133,12 @@ main > #homePageContent{
     margin: 0 auto; 
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
- 
 }
 
-footer{
+/* =========================
+   Layout: Footer
+   ========================= */
+footer {
     grid-area: footer;
     background-color: var(--color-secondary);
     width: 100%;
@@ -143,10 +147,31 @@ footer{
     justify-content: center;
     align-items: center;
     padding: var(--padding-small);
-    
 }
 
-button{
+/* =========================
+   Components: Cards
+   ========================= */
+.utilityCard {
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    border-radius: var(--border-radius);
+    gap: 10px;
+    padding: var(--padding-large);
+    box-shadow: var(--box-shadow);
+    transition: var(--global-transition);
+}
+
+.utilityCard:hover {
+    transform: var(--transform-translateY);
+    cursor: pointer;
+}
+
+/* =========================
+   Components: Buttons
+   ========================= */
+button {
     padding: var(--padding-button);
     font-size: var(--font-sm);
     border: none;
@@ -154,77 +179,93 @@ button{
     transition: var(--global-transition);
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
     transform: var(--transform-translateY);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-    
 
-
-button:focus{
+button:focus {
     outline: none;
 }
 
-button:active{
-     transform: translateY(5px);;
+button:active {
+    transform: translateY(5px);
     filter: brightness(0.8);
-    
 }
 
-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: var(--font-md);
-  border: 2px solid #ccc;
-  border-radius: var(--border-radius);
-  background-color: #fff;
-  color: var(--text-color);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus {
-  border-color: #925AD3;
-  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.2);
-  outline: none;
-}
-
-
-#btn-home{
+/* Button color utility classes */
+#btn-home {
     background-color: rgba(100%, 100%, 100%, 0.7);
 }
 
-#btn-set-break{
+#btn-set-break {
     background-color: #FFE2CF;
 }
 
-.color-blue{
+.color-blue {
     background-color: var(--color-blue);
 }
 
-.color-warning{
-    background-color: #FFCDAB;
+.color-warning {
+    background-color: var(--color-warning);
 }
 
-.color-success{
+.color-success {
     background-color: var(--color-success);
 }
 
-.color-danger{
+.color-danger {
     background-color: var(--color-danger);
 }
 
-.btn-container{
+.btn-container {
     display: flex;
     gap: 15px;
 }
 
+/* =========================
+   Components: Inputs
+   ========================= */
+input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: var(--font-md);
+    border: 2px solid #ccc;
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border-color: #925AD3;
+    box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.2);
+    outline: none;
+}
+
+
+/* =========================
+   Components: Pomodoro
+   ========================= */
+#clock-text {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border: 3px solid var(--text-color);
+    padding: var(--padding-button);
+    border-radius: var(--border-radius);
+}
+/* =========================
+   Responsive
+   ========================= */
 @media (max-width: 600px) {
-  :root {
-    --font-xs: 0.75rem;   
-    --font-sm: 0.875rem;   
-    --font-md: 1rem;       
-    --font-lg: 1.25rem;    
-    --font-xl: 1.5rem; 
-  }
+    :root {
+        --font-xs: 0.75rem;   
+        --font-sm: 0.875rem;   
+        --font-md: 1rem;       
+        --font-lg: 1.25rem;    
+        --font-xl: 1.5rem; 
+    }
 }

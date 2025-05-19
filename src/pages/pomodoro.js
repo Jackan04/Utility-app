@@ -45,6 +45,8 @@ function startTimer(clockText) {
     const btnContainer = document.createElement("div");
     const btnStart = document.createElement("button")
     const btnReset = document.createElement("button")
+    const btnToggleSound  = document.createElement("button")
+    
 
     pomodoroContent.setAttribute("class", "pageContent")
     btnStart.setAttribute("id", "btn-start")
@@ -53,16 +55,22 @@ function startTimer(clockText) {
     btnReset.setAttribute("class", "color-danger")
     btnContainer.setAttribute("class", "btn-container")
     btnSetBreak.setAttribute("id", "btn-set-break")
+    clockText.setAttribute("id", "clock-text")
+    btnToggleSound.setAttribute("id", "btn-toggle-sound")
+    btnToggleSound.setAttribute("title", "Toggle sound on or off for the alert");
+
 
 
     clockText.textContent = "25:00"
     btnStart.textContent = "Start"
     btnReset.textContent = "Reset"
     btnSetBreak.textContent = "Take a Break"
+    btnToggleSound.textContent = "No Sound"
 
     btnContainer.appendChild(btnStart)
     btnContainer.appendChild(btnReset)
     btnContainer.appendChild(btnSetBreak);
+    btnContainer.appendChild(btnToggleSound);
     clockContainer.appendChild(clockText)
     pomodoroContent.appendChild(clockContainer)
     pomodoroContent.appendChild(btnContainer)
