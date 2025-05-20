@@ -267,6 +267,10 @@ input:focus {
     gap: 1rem;
 }
 
+ul{
+    list-style: none;
+}
+
 
 /* =========================
    Responsive

@@ -23,6 +23,18 @@ class Task {
 function addNewTask(title){
     const newTask = new Task(title)
     tasks.push(newTask)
+    renderTaskList()
+
+}
+
+function renderTaskList(){
+    const taskList = document.querySelector("#task-list")
+    taskList.innerHTML = ""
+    tasks.forEach(task => {
+        const listItem = document.createElement("li")
+        listItem.textContent = task.title
+        taskList.appendChild(listItem)
+    });
 }
 
 
@@ -58,16 +70,18 @@ function renderTodoPage(){
     renderHeader("Todo App", "", "rgba(102, 159, 251, 0.3)", "rgba(102, 159, 251, 1)", )
     const app = document.querySelector("#app")
     app.innerHTML = ""
-    const taskList = document.querySelector("#task-list")
-    
-    
-    tasks.forEach(task => {
-        const listItem = document.createElement("li")
-        listItem.textContent = task.title
-        taskList.appendChild(listItem)
-    });
-
     app.appendChild(content)
+    
+    const taskList = document.querySelector("#task-list")
+    const btnAddTask = document.querySelector("#btnAddTask")
+    renderTaskList()
+
+    btnAddTask.addEventListener("click", () => {
+        const inputTask = document.querySelector("#inputTask")
+        const value = inputTask.value.trim()
+        addNewTask(value)
+        inputTask.value = ""
+    })
 }
 
 export {renderTodoPage}
